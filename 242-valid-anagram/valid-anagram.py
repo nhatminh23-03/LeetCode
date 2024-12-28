@@ -5,18 +5,14 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        # Edge Case 
         if len(s) != len(t):
             return False
-        
-        # Using dictionary
+            
         dict_s = {}
         dict_t = {}
-        
-        # Then I will use a for loop to loop through everycharacter in s and add that to the dictionaty and add up 1
-        for i in range(len(s)):
-            dict_s[s[i]] = 1 + dict_s.get(s[i], 0)
-            dict_t[t[i]] = 1 + dict_t.get(t[i], 0)
+        for c in s:
+            dict_s[c] = 1 + dict_s.get(c, 0)
+        for c in t:
+            dict_t[c] = 1 + dict_t.get(c, 0)
         return dict_s == dict_t
-            
         
