@@ -4,21 +4,19 @@ class Solution:
         if n > m:
             return False
 
-        countS1 = {}
-        window = {}
+        countS1 = [0] * 26
+        window = [0] * 26
 
         for i in range(n):
-            countS1[s1[i]] = 1 + countS1.get(s1[i], 0)
-            window[s2[i]] = 1 + window.get(s2[i], 0)
+            countS1[ord(s1[i]) - ord('a')] += 1 
+            window[ord(s2[i]) - ord('a')] += 1 
 
         if countS1 == window:
             return True
         
         for i in range(n, m):
-            window[s2[i - n]] -= 1
-            if window[s2[i-n]] == 0:
-                del window[s2[i-n]]
-            window[s2[i]] = 1 + window.get(s2[i], 0)
+            window[ord(s2[i - n]) - ord('a')] -= 1
+            window[ord(s2[i]) - ord('a')] += 1
 
             if countS1 == window:
                 return True 
