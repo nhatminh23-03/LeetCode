@@ -3,13 +3,11 @@ class Solution:
         charSet = set()
         res = 0
         l = 0
-        for r in range(len(s)):
-            while s[r] in charSet:
+        for c in s:
+            while c in charSet:
                 charSet.remove(s[l])
                 l = l + 1
-            charSet.add(s[r])
+            charSet.add(c)
             res = max(res, len(charSet))
-
         return res
-    
         
