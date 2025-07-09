@@ -1,19 +1,13 @@
-class Solution(object):
-    def characterReplacement(self, s, k):
-        """
-        :type s: str
-        :type k: int
-        :rtype: int
-        """
-        res = 0
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        dictS = {}
         l = 0
-        dict_s = {}
+        res = 0 
         for r in range(len(s)):
-            dict_s[s[r]] = 1 + dict_s.get(s[r], 0)
-            while (r - l + 1) - max(dict_s.values()) > k:
-                dict_s[s[l]] -= 1
-                l += 1
-            res = max(res, r - l + 1)
+            dictS[s[r]] = 1 + dictS.get(s[r], 0)
+            while (r - l + 1) - max(dictS.values()) > k:
+                dictS[s[l]] -= 1
+                l = l + 1
+            res = max(res, (r - l + 1))
         return res
-
         
