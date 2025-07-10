@@ -8,30 +8,29 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        # find the middle
-        slow, fast = head, head 
+        # find the second half
+        slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        # Move up the second pointer 
-        second = slow.next 
+        second = slow.next
 
-        # Inverse the second half
-        prev = None
+        # Reverse the second half
         slow.next = None
+        prev = None
         while second:
             temp = second.next
             second.next = prev
             prev = second
             second = temp
         
-        first, second = head, prev
+        # Reorder List
+        first = head 
+        second = prev
         while second:
             temp1, temp2 = first.next, second.next
             first.next = second
             second.next = temp1
             first, second = temp1, temp2 
-
-
 
         
